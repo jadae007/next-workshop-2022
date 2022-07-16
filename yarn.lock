@@ -611,7 +611,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@18.0.15":
+"@types/react@*", "@types/react@18.0.15", "@types/react@^18.0.15":
   version "18.0.15"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.15.tgz#d355644c26832dc27f3e6cbf0c4f4603fc4ab7fe"
   integrity sha512-iz3BtLuIYH1uWdsv6wXYdhozhqj20oD4/Hk2DNXIn1kFsmp9x8d9QB6FnPhfkbhd2PgEONt9Q1x/ebkwjfFLow==
@@ -624,6 +624,13 @@
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+
+"@types/styled-jsx@^3.4.4":
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/@types/styled-jsx/-/styled-jsx-3.4.4.tgz#643b49a892f596ee8d8e588e0270d6c05947048d"
+  integrity sha512-PRRa7gU7ske4Vs7sKWrqfKnuIIS6E/Yj5oKyxuM11AwOKhH9HlbQ7cKGLluXkOXzpEoDJE+6kQMj3AE34/JooQ==
+  dependencies:
+    styled-jsx "*"
 
 "@types/use-sync-external-store@^0.0.3":
   version "0.0.3"
@@ -2506,7 +2513,7 @@ styled-components@^5.3.5:
     shallowequal "^1.1.0"
     supports-color "^5.5.0"
 
-styled-jsx@5.0.2:
+styled-jsx@*, styled-jsx@5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-5.0.2.tgz#ff230fd593b737e9e68b630a694d460425478729"
   integrity sha512-LqPQrbBh3egD57NBcHET4qcgshPks+yblyhPlH2GY8oaDgKs8SK4C3dBh3oSJjgzJ3G5t1SYEZGHkP+QEpX9EQ==
