@@ -11,10 +11,15 @@ import { TextField } from "formik-material-ui";
 import { Formik, Form, Field, FormikProps } from "formik";
 import Router, { useRouter } from "next/router";
 import { Box } from "@mui/material";
+import { useAppDispatch } from "@/store/store";
+import { signIn } from "@/store/slices/userSlice";
+import withAuth from "@/components/withAuth";
 
 type Props = {};
 
-export default function Login({}: Props) {
+const Login = ({}: Props) => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const showForm = ({
     values,
     setFieldValue,
@@ -54,7 +59,7 @@ export default function Login({}: Props) {
           fullWidth
           size="small"
           color="primary"
-          onClick={() => Router.push("/register")}
+          onClick={() => router.push("/register")}
         >
           Register
         </Button>
@@ -83,7 +88,12 @@ export default function Login({}: Props) {
             <Formik
               initialValues={{ username: "", password: "" }}
               onSubmit={async (values) => {
-                alert(JSON.stringify(values));
+                const response = await dispatch(signIn(values))
+                if(response.meta.requestStatus === "rejected"){
+                  alert("Login Failed")
+                }else{
+                  router.push("/stock")
+                }
               }}
             >
               {(props) => showForm(props)}
@@ -107,3 +117,7 @@ export default function Login({}: Props) {
     </React.Fragment>
   );
 }
+
+export default withAuth(Login);
+
+

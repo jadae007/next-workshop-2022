@@ -1,15 +1,38 @@
-import { SignUp } from "@/models/auth.model";
-import axios from "axios";
+import { SignUp ,SignIn, GetSession } from "@/models/auth.model";
+import httpClient from "@/utils/httpClient";
 
-type signProp = {
+type signProps = {
   username: string;
   password: string;
 };
 
-export const signUp = async (user:signProp): Promise<SignUp> => {
-  const response = await axios.post<SignUp>(
-    "http://localhost:8085/api/v2/authen/register",
-    user
+export const signUp = async (user:signProps): Promise<SignUp> => {
+  const response = await httpClient.post<SignUp>("/authen/register", user);
+  return response.data;
+};
+
+export const signIn = async (user: signProps): Promise<SignIn> => {
+  const { data: response } = await httpClient.post<SignIn>(
+    `/auth/signin`,
+    user,
+    {
+      baseURL: process.env.NEXT_PUBLIC_BASE_URL_LOCAL_API,
+    }
   );
+  return response;
+};
+
+export async function signOut() {
+  const response = await httpClient.get(`/auth/signout`,{
+    baseURL : process.env.NEXT_PUBLIC_BASE_URL_LOCAL_API
+  })
+  return response.data
+}
+
+export const getSession = async (): Promise<GetSession> => {
+  const response = await httpClient.get(`/auth/session`, {
+    baseURL: process.env.NEXT_PUBLIC_BASE_URL_LOCAL_API,
+  });
+
   return response.data;
 };
